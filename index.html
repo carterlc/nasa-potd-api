@@ -12,12 +12,12 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap" rel="stylesheet">
 </head>
 
-<body>
+<body id="bgImgChange">
     <div class="content">
-        <aside class="button-left"><button>&#8592;</button></aside>
+        <aside class="button-left"><button onclick="backwards()">&#8592;</button></aside>
         <div class="daily-dose">
             <h1 id="website-header">Daily Dose of Space</h1>
-            <h2 id="space-day-title">Perihelion Sun 2023</h2>
+            <h2 id="space-day-title">Jupiter in 2015</h2>
             <div class="extra-info">
                 <div class="word-of-the-day">
                     <h3 id="word-of-the-day">Word of the day: Peri</h3>
@@ -28,26 +28,24 @@
                     </p>
                 </div>
                 <div class="img-details">
-                    <p id="img-details">Perihelion for 2023, Earth's closest approach to the Sun, was on January 4 at
-                        16:17
-                        UTC. That was
-                        less than 24 hours after this sharp image of the Sun's disk was recorded with telescope and
-                        H-alpha
-                        filter from Sydney, Australia, planet Earth. An H-alpha filter transmits a characteristic red
-                        light
-                        from hydrogen atoms. In views of the Sun it emphasizes the Sun's chromosphere, a region just
-                        above
-                        the solar photosphere or normally visible solar surface. In this H-alpha image of the
-                        increasingly
-                        active Sun planet-sized sunspot regions are dominated by bright splotches called plages. Dark
-                        filaments of plasma snaking across the solar disk transition to bright prominences when seen
-                        above
-                        the solar limb.</p>
+                    <p id="img-details"> Two remarkable global maps of Jupiter's banded cloud tops can be compared by
+                        just sliding your cursor over this sharp projection (or follow this link) of image data from the
+                        Hubble Space Telescope. Both captured on January 19, during back-to-back 10 hour rotations of
+                        the ruling gas giant, the all-planet projections represent the first in a series of planned
+                        annual portraits by the Outer Planet Atmospheres Legacy program. Comparing the two highlights
+                        cloud movements and measures wind speeds in the planet's dynamic atmosphere. In fact, the Great
+                        Red Spot, the famous long-lived swirling storm boasting 300 mile per hour winds, is seen
+                        sporting a rotating, twisting filament. The images confirm that Great Red Spot is still
+                        shrinking, though still larger than planet Earth. Posing next to it (lower right) is Oval BA,
+                        also known as Red Spot Junior.
+
+                    </p>
                 </div>
             </div>
         </div>
-        <aside class="button-right"><button>&#8594;</button></aside>
+        <aside class="button-right"><button onclick="forward()">&#8594;</button></aside>
     </div>
+    <script src="./script.js"></script>
 </body>
 
 </html>
