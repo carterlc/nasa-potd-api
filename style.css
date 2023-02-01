@@ -66,16 +66,25 @@ button {
     color:white;
 } */
 .word-of-the-day {
-    margin-top: 20em;
-    margin-bottom: 1em;
     max-width: 25em;
     background-color: rgba(0, 0, 0, 0.50);
     border-radius: .75rem;
     padding: 1rem 2rem;
+    flex:1;
+    margin:1em;
+    align-self: flex-end;
 }
 
 .img-details {
     background-color: rgba(0, 0, 0, 0.50);
     border-radius: .75rem;
     padding: 1rem 2rem;
+    flex:2;
+}
+
+.extra-info{
+    display: flex;
+    flex-direction: column;
+    flex-grow:1;
+    
 }
