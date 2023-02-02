@@ -8,7 +8,7 @@ let setDate = new Date()
 let todaysDate = setDate.toISOString().substring(0, 10)
 
 const apiKey = 'EflI7eLWE1kQAcej1ytPC34pDGbXr1J4McwieXEM'
-let nasaApi = `https://api.nasa.gov/planetary/apod?api_key=${apiKey}&date=${todaysDate}&concept_tags=True&hd=True`;
+// let nasaApi = `https://api.nasa.gov/planetary/apod?api_key=${apiKey}&date=${todaysDate}&concept_tags=True&hd=True`;
 
 function imgChange(info) {
     document.getElementById('bgImgChange').style.backgroundImage = `url(${info.url})`
@@ -70,6 +70,13 @@ const space = async (url) => {
         .catch(error => console.error('Error:', error))
 };
 
+
+function convertDate(inputDate) {
+    newFormat = inputDate.replace(/-/g, "/");
+    withOutYear = newFormat.slice(4);
+    return withOutYear;
+}
+console.log(convertDate('2001-05-03'));
 
 
 space(nasaApi);
