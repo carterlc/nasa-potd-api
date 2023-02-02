@@ -39,25 +39,37 @@ creditHTML = async (info) =>{
 }
 
 function runHTML(info) {
-if(info.title == undefined ){
 
-}
-else
-   { imgDetailsHTML(info)
+   imgDetailsHTML(info)
     titleHTML(info)
     imgChange(info)
     dateHTML(info)
     creditHTML(info)
     console.log(info)}
+
 }
+
 
 
 const space = async (url) => {
     await fetch(url)
-        .then(async response => await response.json())
-        .then(data => runHTML(data))
+        .then(  async response => await response.json())
+        .then(data => {
+            if(data.title == undefined ){
+                setDate.setHours(-24).toString();
+                todaysDate = setDate.toISOString().substring(0, 10);
+                console.log(todaysDate)
+                nasaApi = `https://api.nasa.gov/planetary/apod?api_key=${apiKey}&date=${todaysDate}&concept_tags=True&hd=True`;
+            }
+            else
+               { runHTML(data)
+           }
+        })
+           
+        // .then( data => runHTML(data))
         .catch(error => console.error('Error:', error))
 };
+
 
 
 space(nasaApi);
