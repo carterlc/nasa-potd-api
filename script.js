@@ -18,19 +18,35 @@ function imgChange(info) {
 titleHTML = async (info) => {
     let htmlOut = document.getElementById("space-day-title")
     htmlOut.innerHTML = `${info.title}`
-    console.log(info)
 };
 
 imgDetailsHTML = async (info) => {
     let htmlOut = document.getElementById("img-details")
     htmlOut.innerHTML = `${info.explanation}`
-    console.log(info)
+    
 };
+
+dateHTML = async (info) =>{
+    let htmlOut = document.getElementById("photo-taken")
+    htmlOut.innerHTML = `${info.date}`
+    
+}
+
+creditHTML = async (info) =>{
+    let htmlOut = document.getElementById("img-credits")
+    htmlOut.innerHTML = `<strong>Image Credits:</strong> ${info.copyright}</p>`
+    
+}
+
 function runHTML(info) {
 
    imgDetailsHTML(info)
     titleHTML(info)
     imgChange(info)
+    dateHTML(info)
+    creditHTML(info)
+    console.log(info)}
+
 }
 
 
@@ -72,4 +88,47 @@ function forward() {
     console.log(todaysDate)
     nasaApi = `https://api.nasa.gov/planetary/apod?api_key=${apiKey}&date=${todaysDate}&concept_tags=True&hd=True`;
     space(nasaApi);
+};
+
+// interactive 
+
+document.addEventListener('touchstart', handleTouchStart, false);        
+document.addEventListener('touchmove', handleTouchMove, false);
+
+var xDown = null;                                                        
+var yDown = null;
+
+function getTouches(evt) {
+  return evt.touches ||             // browser API
+         evt.originalEvent.touches; // jQuery
+}                                                     
+                                                                         
+function handleTouchStart(evt) {
+    const firstTouch = getTouches(evt)[0];                                      
+    xDown = firstTouch.clientX;                                      
+    yDown = firstTouch.clientY;                                      
+};                                                
+                                                                         
+function handleTouchMove(evt) {
+    if ( ! xDown || ! yDown ) {
+        return;
+    }
+
+    var xUp = evt.touches[0].clientX;                                    
+    var yUp = evt.touches[0].clientY;
+
+    var xDiff = xDown - xUp;
+    var yDiff = yDown - yUp;
+                                                                         
+    if ( Math.abs( xDiff ) > Math.abs( yDiff ) ) {/*most significant*/
+        if ( xDiff > 0 ) {
+            /* right swipe */ 
+            forward()
+        } else {
+            backwards()
+            /* left swipe */
+        }                       
+    } 
+    xDown = null;
+    yDown = null;                                             
 };
