@@ -71,6 +71,18 @@ const space = async (url) => {
 };
 
 
+const numbersAPI = async (url) => {
+    await fetch(url)
+        .then(  async response => await response.json())
+        .then(data => {
+            console.log(`check me`)
+            console.log(data)
+        })
+           
+        // .then( data => runHTML(data))
+        .catch(error => console.error('Error:', error))
+};
+
 function convertDate(inputDate) {
     newFormat = inputDate.replace(/-/g, "/");
     withOutYear = newFormat.slice(4);
@@ -78,6 +90,7 @@ function convertDate(inputDate) {
 }
 console.log(convertDate('2001-05-03'));
 
+numbersAPI(`http://numbersapi.com${convertDate(todaysDate)}/date?json`);
 
 space(nasaApi);
 
