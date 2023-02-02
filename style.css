@@ -79,8 +79,15 @@ aside {
 button {
     background-color: transparent;
     border: none;
-    color: white;
-    font-size: 3em;
+    color: rgba(255, 255, 255, 0.607);
+    font-size: 5em;
+    transition: 300ms;
+    transition-timing-function:ease-in-out;
+    cursor:pointer ;
+}
+
+button:hover {
+    color:white;
 }
 
 /* span{
