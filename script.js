@@ -17,7 +17,7 @@ function imgChange(info) {
 
 titleHTML = async (info) => {
     let htmlOut = document.getElementById("space-day-title")
-    htmlOut.innerHTML = `${info.title}`
+    htmlOut.innerHTML = `<a href="${info.hdurl}" target="_blank">${info.title}</a>`
 };
 
 imgDetailsHTML = async (info) => {
@@ -45,7 +45,7 @@ function runHTML(info) {
     imgChange(info)
     dateHTML(info)
     creditHTML(info)
-    console.log(info)}
+    console.log(info)
 
 }
 
