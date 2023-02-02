@@ -18,14 +18,26 @@ function imgChange(info) {
 titleHTML = async (info) => {
     let htmlOut = document.getElementById("space-day-title")
     htmlOut.innerHTML = `${info.title}`
-    console.log(info)
 };
 
 imgDetailsHTML = async (info) => {
     let htmlOut = document.getElementById("img-details")
     htmlOut.innerHTML = `${info.explanation}`
-    console.log(info)
+    
 };
+
+dateHTML = async (info) =>{
+    let htmlOut = document.getElementById("photo-taken")
+    htmlOut.innerHTML = `${info.date}`
+    
+}
+
+creditHTML = async (info) =>{
+    let htmlOut = document.getElementById("img-credits")
+    htmlOut.innerHTML = `<strong>Image Credits:</strong> ${info.copyright}</p>`
+    
+}
+
 function runHTML(info) {
 if(info.title == undefined ){
 
@@ -33,7 +45,10 @@ if(info.title == undefined ){
 else
    { imgDetailsHTML(info)
     titleHTML(info)
-    imgChange(info)}
+    imgChange(info)
+    dateHTML(info)
+    creditHTML(info)
+    console.log(info)}
 }
 
 
