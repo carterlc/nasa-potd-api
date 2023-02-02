@@ -8,7 +8,7 @@ let setDate = new Date()
 let todaysDate = setDate.toISOString().substring(0, 10)
 
 const apiKey = 'EflI7eLWE1kQAcej1ytPC34pDGbXr1J4McwieXEM'
-// let nasaApi = `https://api.nasa.gov/planetary/apod?api_key=${apiKey}&date=${todaysDate}&concept_tags=True&hd=True`;
+let nasaApi = `https://api.nasa.gov/planetary/apod?api_key=${apiKey}&date=${todaysDate}&concept_tags=True&hd=True`;
 
 function imgChange(info) {
     document.getElementById('bgImgChange').style.backgroundImage = `url(${info.url})`
@@ -27,9 +27,13 @@ imgDetailsHTML = async (info) => {
     console.log(info)
 };
 function runHTML(info) {
-    imgDetailsHTML(info)
+if(info.title == undefined ){
+
+}
+else
+   { imgDetailsHTML(info)
     titleHTML(info)
-    imgChange(info)
+    imgChange(info)}
 }
 
 
