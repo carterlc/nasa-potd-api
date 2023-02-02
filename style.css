@@ -37,7 +37,7 @@ body {
 h1 {
     font-size: 6rem;
     line-height: 6rem;
-    margin-bottom: 3rem;
+    margin-bottom: 2rem;
 }
 
 h2 {
@@ -46,12 +46,20 @@ h2 {
 }
 h3{
     font-size: 1.6rem;
-    margin-bottom: 1.2rem;
+    margin-bottom: 1.rem;
+}
+h4{
+    margin-bottom: 5rem;
+    font-size: 1.1rem;
 }
 p {
     font-family: 'Roboto', sans-serif;
     line-height: 2rem;
     font-size: 1.2rem;
+}
+
+#img-credits{
+    margin-bottom: 1.2rem;
 }
 
 aside {
