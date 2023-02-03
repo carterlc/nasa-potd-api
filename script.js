@@ -84,29 +84,30 @@ const space = async (url) => {
 // running the function above to change the page to today's data 
 space(nasaApi);
 
+// async await funcion for the numbers fact API
 const numbersAPI = async (url) => {
     await fetch(url)
         .then(  async response => await response.json())
         .then(data => {
             let htmlOut = document.getElementById("fact-details")
             htmlOut.innerHTML = data.text;
-            
+            //writes to the screen the date
         })
            
         // .then( data => runHTML(data))
         .catch(error => console.error('Error:', error))
 };
-
+//converts from the standard date format to the date format the API link path needs in order to work
 function convertDate(inputDate) {
     newFormat = inputDate.replace(/-/g, "/");
     withOutYear = newFormat.slice(4);
     return withOutYear;
 }
-// console.log(convertDate('2001-05-03'));
+
+//calling the API
 numbersAPI(`http://numbersapi.com${convertDate(todaysDate)}/date?json`);
 
-// space(nasaApi);
-
+//Go backwards a day
 function backwards() {
     setDate.setHours(-24).toString();
     todaysDate = setDate.toISOString().substring(0, 10);
@@ -116,6 +117,7 @@ function backwards() {
     numbersAPI(`http://numbersapi.com${convertDate(todaysDate)}/date?json`);
 };
 
+//Go forwards a day
 function forward() {
     setDate.setHours(24).toString();
     todaysDate = setDate.toISOString().substring(0, 10);
@@ -123,9 +125,11 @@ function forward() {
     console.log(todaysDate)
     nasaApi = `https://api.nasa.gov/planetary/apod?api_key=${apiKey}&date=${todaysDate}&concept_tags=True&hd=True`;
     space(nasaApi);
+    //if statement if the todaysDate variable is larger than the shortenedDate variable (AKA the date that we live in now) than the hours go back 24hours
     if(todaysDate > shortenedDate){
         setDate.setHours(-24).toString();
         todaysDate = setDate.toISOString().substring(0, 10);
+        //replays the current day fact without going forward
     }
     numbersAPI(`http://numbersapi.com${convertDate(todaysDate)}/date?json`);
 };
