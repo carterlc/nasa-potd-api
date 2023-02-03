@@ -2,11 +2,13 @@
 
 let setDate = new Date()
 
+let currentDate = new Date()
 // this can be used in a function to change the date as needed by adding 24 hours or removing 24 hours 
 // setDate.setHours(-24).toString()
 
 let todaysDate = setDate.toISOString().substring(0, 10)
-
+let shortenedDate = currentDate.toISOString().substring(0, 10)
+console.log(todaysDate);
 const apiKey = 'EflI7eLWE1kQAcej1ytPC34pDGbXr1J4McwieXEM'
 let nasaApi = `https://api.nasa.gov/planetary/apod?api_key=${apiKey}&date=${todaysDate}&concept_tags=True&hd=True`;
 
@@ -71,8 +73,28 @@ const space = async (url) => {
 };
 
 
+const numbersAPI = async (url) => {
+    await fetch(url)
+        .then(  async response => await response.json())
+        .then(data => {
+            let htmlOut = document.getElementById("fact-details")
+            htmlOut.innerHTML = data.text;
+            
+        })
+           
+        // .then( data => runHTML(data))
+        .catch(error => console.error('Error:', error))
+};
 
-space(nasaApi);
+function convertDate(inputDate) {
+    newFormat = inputDate.replace(/-/g, "/");
+    withOutYear = newFormat.slice(4);
+    return withOutYear;
+}
+// console.log(convertDate('2001-05-03'));
+numbersAPI(`http://numbersapi.com${convertDate(todaysDate)}/date?json`);
+
+// space(nasaApi);
 
 function backwards() {
     setDate.setHours(-24).toString();
@@ -80,14 +102,21 @@ function backwards() {
     console.log(todaysDate)
     nasaApi = `https://api.nasa.gov/planetary/apod?api_key=${apiKey}&date=${todaysDate}&concept_tags=True&hd=True`;
     space(nasaApi);
+    numbersAPI(`http://numbersapi.com${convertDate(todaysDate)}/date?json`);
 };
 
 function forward() {
     setDate.setHours(24).toString();
     todaysDate = setDate.toISOString().substring(0, 10);
+    console.log('yes')
     console.log(todaysDate)
     nasaApi = `https://api.nasa.gov/planetary/apod?api_key=${apiKey}&date=${todaysDate}&concept_tags=True&hd=True`;
     space(nasaApi);
+    if(todaysDate > shortenedDate){
+        setDate.setHours(-24).toString();
+        todaysDate = setDate.toISOString().substring(0, 10);
+    }
+    numbersAPI(`http://numbersapi.com${convertDate(todaysDate)}/date?json`);
 };
 
 // interactive 
