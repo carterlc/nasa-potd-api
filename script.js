@@ -7,39 +7,48 @@ let currentDate = new Date()
 // setDate.setHours(-24).toString()
 
 let todaysDate = setDate.toISOString().substring(0, 10)
+
 let shortenedDate = currentDate.toISOString().substring(0, 10)
+
 console.log(todaysDate);
+
+// this is for the NASA API 
 const apiKey = 'EflI7eLWE1kQAcej1ytPC34pDGbXr1J4McwieXEM'
 let nasaApi = `https://api.nasa.gov/planetary/apod?api_key=${apiKey}&date=${todaysDate}&concept_tags=True&hd=True`;
 
+// this is to change the background image of the page 
 function imgChange(info) {
     document.getElementById('bgImgChange').style.backgroundImage = `url("${info.url}")`
 }
 
-
+// this is to change the title of the page 
 titleHTML = async (info) => {
     let htmlOut = document.getElementById("space-day-title")
     htmlOut.innerHTML = `<a href="${info.hdurl}" target="_blank">${info.title}</a>`
 };
 
+// this is to change the explanation 
 imgDetailsHTML = async (info) => {
     let htmlOut = document.getElementById("img-details")
     htmlOut.innerHTML = `${info.explanation}`
     
 };
 
+// this is to change the date in the page
 dateHTML = async (info) =>{
     let htmlOut = document.getElementById("photo-taken")
     htmlOut.innerHTML = `${info.date}`
     
 }
 
+// this is to change the credit of the image 
 creditHTML = async (info) =>{
     let htmlOut = document.getElementById("img-credits")
     htmlOut.innerHTML = `<strong>Image Credits:</strong> ${info.copyright}</p>`
     
 }
 
+// this jsut takes all the function and runs all of them 
 function runHTML(info) {
 
    imgDetailsHTML(info)
@@ -52,7 +61,7 @@ function runHTML(info) {
 }
 
 
-
+// this to fetch the json data from the nasa api and change the html at the same time, this also checks if the next page is undefined and sets the day back 24 hours after clicking forward
 const space = async (url) => {
     await fetch(url)
         .then(  async response => await response.json())
@@ -72,6 +81,7 @@ const space = async (url) => {
         .catch(error => console.error('Error:', error))
 };
 
+// running the function above to change the page to today's data 
 space(nasaApi);
 
 const numbersAPI = async (url) => {
@@ -121,7 +131,7 @@ function forward() {
 };
 
 // interactive 
-
+// this is to check if there is  a swipe and change the page forward or backwards 
 document.addEventListener('touchstart', handleTouchStart, false);        
 document.addEventListener('touchmove', handleTouchMove, false);
 
