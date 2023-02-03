@@ -72,6 +72,7 @@ const space = async (url) => {
         .catch(error => console.error('Error:', error))
 };
 
+space(nasaApi);
 
 const numbersAPI = async (url) => {
     await fetch(url)
