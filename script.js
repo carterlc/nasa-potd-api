@@ -11,7 +11,7 @@ const apiKey = 'EflI7eLWE1kQAcej1ytPC34pDGbXr1J4McwieXEM'
 let nasaApi = `https://api.nasa.gov/planetary/apod?api_key=${apiKey}&date=${todaysDate}&concept_tags=True&hd=True`;
 
 function imgChange(info) {
-    document.getElementById('bgImgChange').style.backgroundImage = `url(${info.url})`
+    document.getElementById('bgImgChange').style.backgroundImage = `url('${info.url}')`
 }
 
 
@@ -55,7 +55,7 @@ const space = async (url) => {
     await fetch(url)
         .then(  async response => await response.json())
         .then(data => {
-            if(data.title == undefined ){
+            if(data.url == undefined ){
                 setDate.setHours(-24).toString();
                 todaysDate = setDate.toISOString().substring(0, 10);
                 console.log(todaysDate)
