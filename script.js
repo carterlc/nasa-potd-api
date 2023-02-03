@@ -113,7 +113,8 @@ function forward() {
     nasaApi = `https://api.nasa.gov/planetary/apod?api_key=${apiKey}&date=${todaysDate}&concept_tags=True&hd=True`;
     space(nasaApi);
     if(todaysDate > shortenedDate){
-        console.log('hello');
+        setDate.setHours(-24).toString();
+        todaysDate = setDate.toISOString().substring(0, 10);
     }
     numbersAPI(`http://numbersapi.com${convertDate(todaysDate)}/date?json`);
 };
