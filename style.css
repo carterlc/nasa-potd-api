@@ -13,7 +13,7 @@
 body {
     font-family: 'Roboto Mono', monospace;
     height: 100vh;
-    background-image: url(https://apod.nasa.gov/apod/image/1510/JupiterHST1522a.jpg);
+    background-image: url("https://apod.nasa.gov/apod/image/1510/JupiterHST1522a.jpg");
     background-size: cover;
     color: white;
     background-attachment: fixed;
